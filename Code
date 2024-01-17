@@ -1,0 +1,16 @@
+if (mouse_check_button_pressed(mb_left) && state != "attacking") {
+    state = "attacking"; // Change to attacking state
+    image_index = 0; // Reset animation frame
+}
+
+if (state == "attacking") {
+    sprite_index = spr_attack; // Change to the attack animation sprite
+    
+    // Play the animation once
+    if (image_index < sprite_get_number(spr_attack) - 1) {
+        image_index += 0.1; // Adjust the speed as needed
+    } else {
+        state = "idle";
+		sprite_index = spr_player;// Return to idle state after completing the attack animation
+    }
+}
